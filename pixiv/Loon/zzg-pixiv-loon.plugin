@@ -1,0 +1,23 @@
+#!name = 𝕏郑在镐 Pixiv 搜索
+#!desc = Pixiv Cookie 自动抓取与定时搜索；支持关键词、通知数量、Safe / All / R18 / R18G、排序和 Cron 配置。
+#!author = 𝕏郑在镐
+#!homepage = https://t.me/zzg_tg
+#!icon = https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a2/e0/2d/a2e02d87-e20e-348f-c217-a289588893f6/AppIcon-0-0-1x_U007epad-0-85-220.png/512x512bb.png
+#!loon_version = 3.1
+#!tag = Pixiv,搜索,通知
+
+[Argument]
+CORE_WORDS = input,"(守望先锋|斗阵特攻)",tag=🛡️ 核心关键词,desc=核心/保底关键词；多个同义词可用 | 分隔
+NORMAL_WORDS = input,"",tag=🔍 普通关键词,desc=普通搜索关键词，例如：黑百合|Widowmaker
+EXCLUDE_WORDS = input,"",tag=❌ 排除关键词,desc=排除关键词；多个词用空格分隔
+NOTIFY_COUNT = input,"5",tag=🔔 通知数量,desc=每轮发送的通知数量
+MODE = select,"r18","safe","all","r18g",tag=🔞 内容模式,desc=safe=全年龄；all=全部；r18=R18；r18g=R18G→R18→ALL降级
+ORDER = select,"date_d","date",tag=↕️ 排序方式,desc=date_d=新到旧；date=旧到新
+CRON = input,"5 20 * * *",tag=⏰ 定时表达式,desc=五字段 Cron，例如 5 20 * * * 表示每天 20:05
+
+[Script]
+http-request ^https:\/\/www\.pixiv\.net\/ script-path=pixiv-cookie.js,timeout=30,tag=Pixiv Cookie 自动抓取
+cron {CRON} script-path=pixiv-search.js,argument=[{CORE_WORDS},{NORMAL_WORDS},{EXCLUDE_WORDS},{NOTIFY_COUNT},{MODE},{ORDER}],timeout=60,tag=𝕏郑在镐 Pixiv 搜索
+
+[Mitm]
+hostname = www.pixiv.net
