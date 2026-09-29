@@ -28,7 +28,7 @@ if (cookieStr) {
             const success = $persistentStore.write(newSessionID, STORE_KEY);
             
             if (success) {
-                console.log(`[Pixiv] Cookie 更新成功: ${newSessionID.substring(0, 10)}...`);
+                console。log(`[Pixiv] Cookie 更新成功: ${newSessionID.substring(0, 10)}...`);
                 $notification.post(
                     "Pixiv Cookie 抓取成功 🎉", 
                     "您的 PHPSESSID 已更新", 
