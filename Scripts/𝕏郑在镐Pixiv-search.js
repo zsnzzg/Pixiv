@@ -334,7 +334,7 @@ async function processData(ctx, Log, list, prefix, currentQuery, CONFIG) {
         }
 
         const notification = {
-            title: `郑在镐 Pixiv (${i+1}/${items.length})\n${prefix} [${typeLabel}]`,
+            title: `𝕏郑在镐 Pixiv (${i+1}/${items.length})\n${prefix} [${typeLabel}]`,
             subtitle: `🎨作品: ${item.title}`,
             body: `👤画师: ${item.userName}${pageInfo}\n🏷️标签: ${tagsShort}\n🔍指令: ${displayQuery}`,
             action: {
