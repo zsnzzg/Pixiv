@@ -44,12 +44,12 @@ scriptings:
 - http_request:
     name: 𝕏郑在镐 Pixiv Cookie 自动抓取
     match: (?i)^https://www\.pixiv\.net/
-    script_url: https://raw.githubusercontent.com/zsnzzg/Pixiv/main/Scripts/𝕏郑在镐Pixiv-cookie.js
+    script_url: https://raw.githubusercontent.com/zsnzzg/Pixiv/main/Egern/𝕏郑在镐Pixiv-cookie.js
     timeout: 30
 - schedule:
     name: 𝕏郑在镐 Pixiv 搜索
     cron: "{{{CRON}}}"
-    script_url: https://raw.githubusercontent.com/zsnzzg/Pixiv/main/Scripts/𝕏郑在镐Pixiv-search.js
+    script_url: https://raw.githubusercontent.com/zsnzzg/Pixiv/main/Egern/𝕏郑在镐Pixiv-search.js
     timeout: 60
 
 mitm:
