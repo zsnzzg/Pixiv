@@ -1,0 +1,52 @@
+name: GLaDOS 自动签到
+description: GLaDOS / Railgun 自动签到与积分兑换，并抓取 NodeLoc、NodeSeek、LinuxDO Cookie（原脚本暂不支持论坛自动阅读）；每天 07:10 执行。
+author: Linsar
+icon: antenna.radiowaves.left.and.right
+
+compat_arguments:
+  exchangePoints: "100"
+
+compat_arguments_desc: |
+  exchangePoints：兑换积分档位，可选 100、200、500，默认 100。
+  首次使用：登录后访问对应账号页面以抓取 Cookie。
+  GLaDOS / Railgun：/console/account
+  NodeLoc、NodeSeek、LinuxDO：账户设置页面。
+  同一域名可保存多个账号的 Cookie。
+
+scriptings:
+  - http_request:
+      name: GLaDOS Cookie 抓取
+      match: '^https://(glados\.network|railgun\.info|glados\.vip|glados\.one|glados\.space)/console/account$'
+      script_url: https://raw.githubusercontent.com/Linsars/Surge/main/JS/glados.js
+      timeout: 10
+  - http_request:
+      name: NodeLoc Cookie 抓取
+      match: '^https://www\.nodeloc\.com/(my/preferences|u/[^/]+/preferences/account)'
+      script_url: https://raw.githubusercontent.com/Linsars/Surge/main/JS/glados.js
+      timeout: 10
+  - http_request:
+      name: NodeSeek Cookie 抓取
+      match: '^https://nodeseek\.cc/(my/preferences|u/[^/]+/preferences/account)'
+      script_url: https://raw.githubusercontent.com/Linsars/Surge/main/JS/glados.js
+      timeout: 10
+  - http_request:
+      name: LinuxDO Cookie 抓取
+      match: '^https://linux\.do/(my/preferences|u/[^/]+/preferences/account)'
+      script_url: https://raw.githubusercontent.com/Linsars/Surge/main/JS/glados.js
+      timeout: 10
+  - schedule:
+      name: GLaDOS 自动签到
+      cron: "10 7 * * *"
+      script_url: https://raw.githubusercontent.com/Linsars/Surge/main/JS/glados.js
+      timeout: 120
+
+mitm:
+  hostnames:
+    - glados.network
+    - railgun.info
+    - glados.vip
+    - glados.one
+    - glados.space
+    - www.nodeloc.com
+    - nodeseek.cc
+    - linux.do
