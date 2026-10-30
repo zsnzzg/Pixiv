@@ -1,5 +1,5 @@
 name: GLaDOS 自动签到
-description: GLaDOS / Railgun 自动签到与积分兑换，以及 NodeLoc、NodeSeek、LinuxDO 自动阅读；每天 07:10 执行。
+description: GLaDOS / Railgun 自动签到与积分兑换，并抓取 NodeLoc、NodeSeek、LinuxDO Cookie（原脚本暂不支持论坛自动阅读）；每天 07:10 执行。
 author: Linsar
 icon: antenna.radiowaves.left.and.right
 
